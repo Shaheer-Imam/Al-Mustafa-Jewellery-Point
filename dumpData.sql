@@ -1,3 +1,28 @@
+
+--data dumping sequence
+
+INSERT INTO Customer(customer_id,customer_name,customer_address,customer_phone) VALUES (CUSTOMER_SEQ.NEXTVAL,'QADIR','A-1/47 Rizwan Society near Safoorah Goth','03452964176');
+INSERT INTO Orders(order_id,customer_id,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,CUSTOMER_SEQ.CURRVAL,'25/06/2019',145000);
+INSERT INTO Product(product_id,product_type,product_carat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Ring',22,4,7300,28000,30000,20);
+INSERT INTO Order_Product(order_product_id,order_id,product_id,order_product_quantity) VALUES (ORDERPROD_SEQ.NEXTVAL,ORDER_SEQ.CURRVAL,PRODUCT_SEQ.CURRVAL,1);
+INSERT INTO Sales(sales_id,customer_id) VALUES (SALES_SEQ.NEXTVAL,CUSTOMER_SEQ.CURRVAL);
+INSERT INTO Sales_Order(sales_id,order_id) VALUES (SALES_SEQ.CURRVAL,ORDER_SEQ.CURRVAL);
+commit;
+
+
+
+INSERT INTO Supplier(supplier_id,supplier_name,supplier_phone) VALUES (SUPPLIER_SEQ.NEXTVAL,'ALI','0315458464'); --marzi hai change karni hai ya nahi
+INSERT INTO Invoice(invoice_id,supplier_id,invoice_amount,invoice_rate,invoice_date) VALUES (INVOICE_SEQ.NEXTVAL,SUPPLIER_SEQ.CURRVAL,145000,7300,'25/06/2019');
+INSERT INTO Invoice_Product(invoice_product_id,invoice_product_quantity,product_id,invoice_id) VALUES (INVOICEPROD_SEQ.NEXTVAL,2,PRODUCT_SEQ.CURRVAL,INVOICE_SEQ.CURRVAL);
+INSERT INTO ACCOUNTS(account_id,account_balance,account_gold,account_rate,supplier_id) VALUES (ACCOUNT_SEQ.NEXTVAL,NULL,'2',7300,SUPPLIER_SEQ.CURRVAL);
+INSERT INTO invoice_account(invoice_account_id,invoice_id,account_id) VALUES (INVOICEACC_SEQ.NEXTVAL,INVOICE_SEQ.CURRVAL,ACCOUNT_SEQ.CURRVAL);
+commit;
+
+
+
+
+
+
 --Enterting customer data into customer table
 
 INSERT INTO Customer(customer_id,customer_name,customer_address,customer_phone) VALUES (CUSTOMER_SEQ.NEXTVAL,'Shaheer','A-1/47 Rizwan Society near Safoorah Goth','03452964176');
@@ -13,12 +38,16 @@ INSERT INTO Customer(customer_id,customer_name,customer_address,customer_phone) 
 
 --Entering user data into user table
 
-INSERT INTO User(user_id,user_name,user_type,user_phone,user_password) VALUES (USER_SEQ.NEXTVAL,'Mubashir','admin','1234567890','mubashir123');
-INSERT INTO User(user_id,user_name,user_type,user_phone,user_password) VALUES (USER_SEQ.NEXTVAL,'Saqib','cashier','0987654321','saqib!@#$');
-INSERT INTO User(user_id,user_name,user_type,user_phone,user_password) VALUES (USER_SEQ.NEXTVAL,'Saadat','cashier','0123456789','linkedlistuser');
-INSERT INTO User(user_id,user_name,user_type,user_phone,user_password) VALUES (USER_SEQ.NEXTVAL,'Asad','cashier','0213456789','asadaliart420');
-INSERT INTO User(user_id,user_name,user_type,user_phone,user_password) VALUES (USER_SEQ.NEXTVAL,'Ali','admin','0321456789','neduetcsit');
+INSERT INTO employee(user_id,user_name,user_type,user_phone,user_password) VALUES (USER_SEQ.NEXTVAL,'Mubashir','admin','1234567890','mubashir123');
+INSERT INTO employee(user_id,user_name,user_type,user_phone,user_password) VALUES (USER_SEQ.NEXTVAL,'Saqib','cashier','0987654321','saqib!@#$');
+INSERT INTO employee(user_id,user_name,user_type,user_phone,user_password) VALUES (USER_SEQ.NEXTVAL,'Saadat','cashier','0123456789','linkedlistuser');
+INSERT INTO employee(user_id,user_name,user_type,user_phone,user_password) VALUES (USER_SEQ.NEXTVAL,'Asad','cashier','0213456789','asadaliart420');
+INSERT INTO employee(user_id,user_name,user_type,user_phone,user_password) VALUES (USER_SEQ.NEXTVAL,'Ali','admin','0321456789','neduetcsit');
+commit;
 
+select * from employee;
+
+select * from sales;
 --Entering product data into product table
 
 INSERT INTO Product(product_id,product_type,product_carat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Ring',22,3.8,7300,27740,30000,20);
@@ -36,7 +65,7 @@ INSERT INTO Product(product_id,product_type,product_carat,product_weight,product
 
 --Entering order data into order table
 
-INSERT INTO Order(order_id,customer_id,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,1,'22/06/2019',45000);
+INSERT INTO Orders(order_id,customer_id,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,1,'22/06/2019',45000);
 INSERT INTO Order(order_id,customer_id,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,3,'25/06/2019',98000);
 INSERT INTO Order(order_id,customer_id,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,5,'25/06/2019',40000);
 INSERT INTO Order(order_id,customer_id,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,6,'28/06/2019',32000);
@@ -127,7 +156,7 @@ INSERT INTO Invoice_Product(invoice_product_id,invoice_product_quantity,product_
 
 -- Entering account data into account table 
 
-INSERT INTO(account_id,account_balance,account_gold,account_rate,supplier_id) VALUES (ACCOUNT_SEQ.NEXTVAL,,'',,);
+INSERT INTO(account_id,account_balance,account_gold,account_rate,supplier_id) VALUES (ACCOUNT_SEQ.NEXTVAL,,'',,ACCOUNT_SEQ);
 INSERT INTO(account_id,account_balance,account_gold,account_rate,supplier_id) VALUES (ACCOUNT_SEQ.NEXTVAL,,'',,);
 INSERT INTO(account_id,account_balance,account_gold,account_rate,supplier_id) VALUES (ACCOUNT_SEQ.NEXTVAL,,'',,);
 INSERT INTO(account_id,account_balance,account_gold,account_rate,supplier_id) VALUES (ACCOUNT_SEQ.NEXTVAL,,'',,);
