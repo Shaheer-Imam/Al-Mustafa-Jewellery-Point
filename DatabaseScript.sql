@@ -25,6 +25,12 @@
   INCREMENT BY 1
   CACHE 20;
 
+ CREATE SEQUENCE ORDERPROD_SEQ
+  MINVALUE 1
+  START WITH 1
+  INCREMENT BY 1
+  CACHE 20;
+
  CREATE SEQUENCE SALES_SEQ 
   MINVALUE 1
   START WITH 1
@@ -37,12 +43,29 @@
   INCREMENT BY 1
   CACHE 20;
 
- CREATE SEQUENCE INVOICE_SEQ 
+ CREATE SEQUENCE INVOICE_SEQ
   MINVALUE 1
   START WITH 1
   INCREMENT BY 1
   CACHE 20;
 
+ CREATE SEQUENCE INVOICEPROD_SEQ
+  MINVALUE 1
+  START WITH 1
+  INCREMENT BY 1
+  CACHE 20;
+
+ CREATE SEQUENCE ACCOUNT_SEQ
+  MINVALUE 1
+  START WITH 1
+  INCREMENT BY 1
+  CACHE 20; 
+
+ CREATE SEQUENCE INVOICEACC_SEQ
+  MINVALUE 1
+  START WITH 1
+  INCREMENT BY 1
+  CACHE 20;
 
 /*** END OF SEQUENCES ***/
 
@@ -69,9 +92,10 @@ CREATE TABLE Product(
  product_id NUMBER(38,0) NOT NULL,
  product_type VARCHAR2(20) NOT NULL,
  product_karat NUMBER(38,0) NOT NULL,
- product_weight VARCHAR2(20) NOT NULL,
- product_unitprice VARCHAR(20) NOT NULL,
- product_price NUMBER(38,0) NOT NULL,
+ product_weight NUMBER(38,0) NOT NULL,
+ product_rate NUMBER(38,0) NOT NULL,
+ product_unitprice NUMBER(38,0) NOT NULL,
+ product_price_of_gold NUMBER(38,0) NOT NULL,
  product_quantity NUMBER(38,0) NOT NULL,
  CONSTRAINT product_pk PRIMARY KEY(product_id)
 );
@@ -102,14 +126,20 @@ CREATE TABLE Order_Product(
 CREATE TABLE Sales(
  sales_id NUMBER(38,0) NOT NULL,
  customer_id NUMBER(38,0) NOT NULL,
- order_id NUMBER(38,0) NOT NULL,
  CONSTRAINT sales_pk PRIMARY KEY(sales_id),
  CONSTRAINT fk_customer FOREIGN KEY(customer_id)
- REFERENCES Customer(customer_id),
- CONSTRAINT fk_order FOREIGN KEY(order_id)
- REFERENCES Order(order_id)
+ REFERENCES Customer(customer_id)
 );
 
+CREATE TABLE Sales_Order(
+ sales_id NUMBER(38,0) NOT NULL,
+ order_id NUMBER(38,0) NOT NULL,
+ CONSTRAINT fk_sales FOREIGN KEY(sales_id)
+ REFERENCES Sales(sales_id),
+ CONSTRAINT fk_order FOREIGN KEY(order_id)
+ REFERENCES Order(order_id),
+ CONSTRAINT sales_order_pk PRIMARY KEY(sales_id,order_id)
+);
 CREATE TABLE Supplier(
  supplier_id NUMBER(38,0) NOT NULL,
  supplier_name VARCHAR2(50) NOT NULL,
@@ -141,7 +171,7 @@ CREATE TABLE Invoice_Product(
 );
 
 CREATE TABLE Account(
- account_id NUMBER(38,0) NOT NULL,
+ account_id NUMBER(38,0) NOT NULL,	
  account_balance NUMBER(38,0) DEFAULT NULL,
  account_gold VARCHAR2(50) NOT NULL,
  account_rate NUMBER(38,0) NOT NULL,
