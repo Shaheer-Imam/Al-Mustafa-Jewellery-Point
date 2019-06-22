@@ -79,7 +79,7 @@ CREATE TABLE Customer(
  CONSTRAINT customer_pk PRIMARY KEY(customer_id)
 );
 
-CREATE TABLE User(
+CREATE TABLE employee(
  user_id NUMBER(38,0) NOT NULL,
  user_name VARCHAR2(100) NOT NULL,
  user_type VARCHAR2(50) NOT NULL,
@@ -100,13 +100,13 @@ CREATE TABLE Product(
  CONSTRAINT product_pk PRIMARY KEY(product_id)
 );
 
-CREATE TABLE Order(
+CREATE TABLE orders(
  order_id NUMBER(38,0) NOT NULL,
  order_date VARCHAR2(20) NOT NULL,
  order_amount NUMBER(38,0) NOT NULL,
  customer_id NUMBER(38,0) NOT NULL,
  CONSTRAINT order_pk PRIMARY KEY(order_id),
- CONSTRAINT fk_customer FOREIGN KEY(customer_id)
+ CONSTRAINT fk_customer_orders FOREIGN KEY(customer_id)
  REFERENCES Customer(customer_id) 
 );
 
@@ -116,9 +116,9 @@ CREATE TABLE Order_Product(
  order_id NUMBER(38,0) NOT NULL,
  product_id NUMBER(38,0) NOT NULL,
  CONSTRAINT order_product_pk PRIMARY KEY(order_product_id),
- CONSTRAINT fk_order FOREIGN KEY(order_id)
- REFERENCES Order(order_id),
- CONSTRAINT fk_product FOREIGN KEY(product_id)
+ CONSTRAINT fk_order_order_product FOREIGN KEY(order_id)
+ REFERENCES Orders(order_id),
+ CONSTRAINT fk_product_order_product FOREIGN KEY(product_id)
  REFERENCES Product(product_id)
 );
 
@@ -126,17 +126,17 @@ CREATE TABLE Sales(
  sales_id NUMBER(38,0) NOT NULL,
  customer_id NUMBER(38,0) NOT NULL,
  CONSTRAINT sales_pk PRIMARY KEY(sales_id),
- CONSTRAINT fk_customer FOREIGN KEY(customer_id)
+ CONSTRAINT fk_customer_sales FOREIGN KEY(customer_id)
  REFERENCES Customer(customer_id)
 );
 
 CREATE TABLE Sales_Order(
  sales_id NUMBER(38,0) NOT NULL,
  order_id NUMBER(38,0) NOT NULL,
- CONSTRAINT fk_sales FOREIGN KEY(sales_id)
+ CONSTRAINT fk_sales_sales_order FOREIGN KEY(sales_id)
  REFERENCES Sales(sales_id),
- CONSTRAINT fk_order FOREIGN KEY(order_id)
- REFERENCES Order(order_id),
+ CONSTRAINT fk_order_sales_order FOREIGN KEY(order_id)
+ REFERENCES Orders(order_id),
  CONSTRAINT sales_order_pk PRIMARY KEY(sales_id,order_id)
 );
 CREATE TABLE Supplier(
@@ -153,7 +153,7 @@ CREATE TABLE Invoice(
  invoice_date VARCHAR(20) NOT NULL,
  supplier_id NUMBER(38,0) NOT NULL,
  CONSTRAINT invoice_pk PRIMARY KEY(invoice_id),
- CONSTRAINT fk_supplier FOREIGN KEY(supplier_id)
+ CONSTRAINT fk_supplier_invoice FOREIGN KEY(supplier_id)
  REFERENCES Supplier(supplier_id)
 );  
 
@@ -163,20 +163,20 @@ CREATE TABLE Invoice_Product(
  product_id NUMBER(38,0) NOT NULL,
  invoice_id NUMBER(38,0) NOT NULL,
  CONSTRAINT invoice_product_pk PRIMARY KEY(invoice_product_id),
- CONSTRAINT fk_product FOREIGN KEY(product_id)
+ CONSTRAINT fk_product_invoice_product FOREIGN KEY(product_id)
  REFERENCES Product(product_id),
- CONSTRAINT fk_invoice FOREIGN KEY(invoice_id)
+ CONSTRAINT fk_invoice_invoice_product FOREIGN KEY(invoice_id)
  REFERENCES Invoice(invoice_id)
 );
 
-CREATE TABLE Account(
+CREATE TABLE Accounts(
  account_id NUMBER(38,0) NOT NULL,	
  account_balance NUMBER(38,0) DEFAULT NULL,
  account_gold VARCHAR2(50) NOT NULL,
  account_rate NUMBER(38,0) NOT NULL,
  supplier_id NUMBER(38,0) NOT NULL,
  CONSTRAINT account_pk PRIMARY KEY(account_id),
- CONSTRAINT fk_supplier FOREIGN KEY(supplier_id)
+ CONSTRAINT fk_supplier_accounts FOREIGN KEY(supplier_id)
  REFERENCES Supplier(supplier_id)
 );
 
@@ -185,10 +185,21 @@ CREATE TABLE Invoice_Account(
  invoice_id NUMBER(38,0) NOT NULL,
  account_id NUMBER(38,0) NOT NULL,
  CONSTRAINT invoice_account_pk PRIMARY KEY(invoice_account_id),
- CONSTRAINT fk_invoice FOREIGN KEY(invoice_id)
+ CONSTRAINT fk_invoice_invoice_accounts FOREIGN KEY(invoice_id)
  REFERENCES Invoice(invoice_id),
- CONSTRAINT fk_account FOREIGN ACCOUNT(account_id)
- REFERENCES Account(account_id)
+ CONSTRAINT fk_account_invoice_account FOREIGN KEY(account_id)
+ REFERENCES Accounts(account_id)
 );
 
+commit;
+
 /*** END OF TABLES ***/
+/*** delete all tables ***/
+SELECT 'drop table ' || table_name || ';' from user_tables where table_name like '%%'
+drop table CUSTOMER;
+drop table PRODUCT;
+drop table SALES;
+drop table SUPPLIER;
+drop table INVOICE;
+drop table INVOICE_PRODUCT;
+drop table EMPLOYEE;
