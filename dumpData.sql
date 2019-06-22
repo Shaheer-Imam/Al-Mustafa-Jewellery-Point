@@ -21,31 +21,31 @@ INSERT INTO User(user_id,user_name,user_type,user_phone,user_password) VALUES (U
 
 --Entering product data into product table
 
-INSERT INTO Product(product_id,product_type,product_karat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Ring',22,3.8,7300,27740,30000,20);
-INSERT INTO Product(product_id,product_type,product_karat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Bangle',22,15,7300,109500,120000,15);
-INSERT INTO Product(product_id,product_type,product_karat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Necklace',22,18,7300,131400,150000,22);
-INSERT INTO Product(product_id,product_type,product_karat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Ring',22,3.5,7300,25550,30000,30);
-INSERT INTO Product(product_id,product_type,product_karat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Necklace',22,20,7300,146000,160000,25);
-INSERT INTO Product(product_id,product_type,product_karat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Earrings',22,4,7300,29200,35000,15);
-INSERT INTO Product(product_id,product_type,product_karat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Tiara',22,2,7300,14600,20000,8);
-INSERT INTO Product(product_id,product_type,product_karat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Brooch',22,9,7300,65700,75000,10);
-INSERT INTO Product(product_id,product_type,product_karat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Earring',22,5,7300,36500,45000,40);
-INSERT INTO Product(product_id,product_type,product_karat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Bangle',22,20,7300,146000,160000,28);
-INSERT INTO Product(product_id,product_type,product_karat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Ring',22,3.5,7300,25500,35000,55);
-INSERT INTO Product(product_id,product_type,product_karat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Necklace',22,20,7300,146000,160000,34);
+INSERT INTO Product(product_id,product_type,product_carat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Ring',22,3.8,7300,27740,30000,20);
+INSERT INTO Product(product_id,product_type,product_carat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Bangle',22,15,7300,109500,120000,15);
+INSERT INTO Product(product_id,product_type,product_carat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Necklace',22,18,7300,131400,150000,22);
+INSERT INTO Product(product_id,product_type,product_carat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Ring',22,3.5,7300,25550,30000,30);
+INSERT INTO Product(product_id,product_type,product_carat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Necklace',22,20,7300,146000,160000,25);
+INSERT INTO Product(product_id,product_type,product_carat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Earrings',22,4,7300,29200,35000,15);
+INSERT INTO Product(product_id,product_type,product_carat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Tiara',22,2,7300,14600,20000,8);
+INSERT INTO Product(product_id,product_type,product_carat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Brooch',22,9,7300,65700,75000,10);
+INSERT INTO Product(product_id,product_type,product_carat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Earring',22,5,7300,36500,45000,40);
+INSERT INTO Product(product_id,product_type,product_carat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Bangle',22,20,7300,146000,160000,28);
+INSERT INTO Product(product_id,product_type,product_carat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Ring',22,3.5,7300,25500,35000,55);
+INSERT INTO Product(product_id,product_type,product_carat,product_weight,product_rate,product_price_of_gold,product_unitprice,product_quantity) VALUES (PRODUCT_SEQ.NEXTVAL,'Necklace',22,20,7300,146000,160000,34);
 
 --Entering order data into order table
 
-INSERT INTO Order(order_id,customer_id,order_quantity,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,1,3,'22/06/2019',45000);
-INSERT INTO Order(order_id,customer_id,order_quantity,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,3,5,'25/06/2019',98000);
-INSERT INTO Order(order_id,customer_id,order_quantity,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,5,2,'25/06/2019',40000);
-INSERT INTO Order(order_id,customer_id,order_quantity,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,6,1,'28/06/2019',32000);
-INSERT INTO Order(order_id,customer_id,order_quantity,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,7,4,'30/06/2019',64000);
-INSERT INTO Order(order_id,customer_id,order_quantity,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,9,3,'1/07/2019',50000);
-INSERT INTO Order(order_id,customer_id,order_quantity,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,10,5,'1/07/2019',71000);
-INSERT INTO Order(order_id,customer_id,order_quantity,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,11,3,'4/07/2019',21000);
-INSERT INTO Order(order_id,customer_id,order_quantity,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,13,2,'7/07/2019',15000);
-INSERT INTO Order(order_id,customer_id,order_quantity,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,15,6,'9/07/2019',60000);
+INSERT INTO Order(order_id,customer_id,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,1,'22/06/2019',45000);
+INSERT INTO Order(order_id,customer_id,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,3,'25/06/2019',98000);
+INSERT INTO Order(order_id,customer_id,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,5,'25/06/2019',40000);
+INSERT INTO Order(order_id,customer_id,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,6,'28/06/2019',32000);
+INSERT INTO Order(order_id,customer_id,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,7,'30/06/2019',64000);
+INSERT INTO Order(order_id,customer_id,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,9,'1/07/2019',50000);
+INSERT INTO Order(order_id,customer_id,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,10,'1/07/2019',71000);
+INSERT INTO Order(order_id,customer_id,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,11,'4/07/2019',21000);
+INSERT INTO Order(order_id,customer_id,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,13,'7/07/2019',15000);
+INSERT INTO Order(order_id,customer_id,order_date,order_amount) VALUES (ORDER_SEQ.NEXTVAL,15,'9/07/2019',60000);
 
 --Entering order product data into order product table 
 

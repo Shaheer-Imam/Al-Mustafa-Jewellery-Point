@@ -91,7 +91,7 @@ CREATE TABLE User(
 CREATE TABLE Product(
  product_id NUMBER(38,0) NOT NULL,
  product_type VARCHAR2(20) NOT NULL,
- product_karat NUMBER(38,0) NOT NULL,
+ product_carat NUMBER(38,0) NOT NULL,
  product_weight NUMBER(38,0) NOT NULL,
  product_rate NUMBER(38,0) NOT NULL,
  product_unitprice NUMBER(38,0) NOT NULL,
@@ -103,7 +103,6 @@ CREATE TABLE Product(
 CREATE TABLE Order(
  order_id NUMBER(38,0) NOT NULL,
  order_date VARCHAR2(20) NOT NULL,
- order_quantity NUMBER(38,0) NOT NULL,
  order_amount NUMBER(38,0) NOT NULL,
  customer_id NUMBER(38,0) NOT NULL,
  CONSTRAINT order_pk PRIMARY KEY(order_id),
