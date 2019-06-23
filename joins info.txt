@@ -1,0 +1,7 @@
+order ka product 
+invoice ka product
+suplier ka account
+account ka invoice
+customer ka order
+customer ka sales
+employees kitne ha
